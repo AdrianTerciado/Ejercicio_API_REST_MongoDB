@@ -11,18 +11,18 @@ const morgan = require('./middlewares/morgan');
 app.use(morgan(':method :host :status :param[id] - :response-time ms :body'));
 
 // Rutas
-const productsApiRoutes = require("./routes/productsApi.routes")
-const productsRoutes = require("./routes/products.routes")
-// const entriesApiRoutes = require("./routes/entriesApi.routes")
+const providersApiRoutes = require("./routes/providers.routes");
+const productsApiRoutes = require("./routes/products.routes");
 
 app.use(express.json()); // Habilito recepción de JSON en servidor
 
 // Rutas
 //API
-app.use('/api/products',productsApiRoutes);
+app.use('/api/providers', providersApiRoutes);
+app.use('/api/products', productsApiRoutes);
 
 //WEB
-app.use('/products',productsRoutes);
+//app.use('/products',productsRoutes);
 
 // Para rutas no existentes
 app.use('*',error404);
